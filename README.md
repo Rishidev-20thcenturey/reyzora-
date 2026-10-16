@@ -119,6 +119,56 @@ The source code, model artifact, and training cache are maintained in their orig
 
 > **Scope note:** External discovery listings are not automatically orderable through CraveDirect. Online payments and complete worldwide ordering are not implemented.
 
+## Featured project · AI-WIFU
+
+<p>
+  <strong>AI-WIFU</strong> is a working full-stack AI companion application centered on expressive anime avatars, character-aware conversation, and live voice interaction. The experience combines animated 2D/3D characters, camera-based vision, generated speech, music, character customization, and browser-side memory in one interface.
+</p>
+
+<table>
+  <tr>
+    <td width="66%" valign="top">
+      <a href="https://live-anime-ai-waifu.ai.studio/">
+        <img
+          src="assets/ai-wifu-lobby.jpg"
+          alt="AI-WIFU lobby showing its animated 3D companion, voice-call controls, vision controls, affection level, avatar mode switch, and customization actions"
+          width="100%"
+        />
+      </a>
+      <p align="center">
+        <sub>Actual AI-WIFU lobby screenshot from the original project repository. Select the image to open the live app.</sub>
+      </p>
+    </td>
+    <td width="34%" valign="top">
+      <h3>Project links</h3>
+      <p><strong>Live application</strong><br />
+        <a href="https://live-anime-ai-waifu.ai.studio/">Open AI-WIFU online ↗</a>
+      </p>
+      <p><strong>Source code</strong><br />
+        <a href="https://github.com/Rishidev-20thcenturey/AI-WIFU-">Open the original AI-WIFU repository ↗</a>
+      </p>
+      <p><strong>Technical documentation</strong><br />
+        <a href="https://github.com/Rishidev-20thcenturey/AI-WIFU-#readme">Features, setup, and architecture ↗</a>
+      </p>
+    </td>
+  </tr>
+</table>
+
+### Technology and scope
+
+| Area | Details |
+|---|---|
+| **Frontend** | React 19, TypeScript, Vite, Tailwind CSS, Motion |
+| **Backend and transport** | Node.js, Express, HTTP API routes, WebSocket live-audio bridge |
+| **AI integration** | Google Gemini APIs for chat, voice, transcription, vision, and optional music generation |
+| **Avatar and interaction** | Three.js, VRM avatar rendering, 2D canvas character, expressions, lip-sync and customization |
+| **Personalization** | Character presets, conversation history, affection score, and browser-local memory |
+| **Live demo** | [live-anime-ai-waifu.ai.studio](https://live-anime-ai-waifu.ai.studio/) |
+| **Status** | Working integrated application; external AI access and browser permissions affect some features |
+
+> **Deployment and privacy note:** The app uses browser storage for some profile, chat, and memory data, and sends selected prompts, images, or audio to the configured AI provider when those features are used. The source README documents remaining deployment-hardening needs, including backend access controls and rate limiting. The live link is provided as an entry point; availability and all provider-dependent features are not independently guaranteed by this portfolio.
+
+
 ---
 
 ## More projects
