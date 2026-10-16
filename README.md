@@ -20,7 +20,7 @@
     <td width="66%" valign="top">
       <a href="https://github.com/Rishidev-20thcenturey/rustes-generative-ai">
         <img
-          src="https://raw.githubusercontent.com/Rishidev-20thcenturey/rustes-generative-ai/main/Screenshot_20261014-165136%20%281%29.png"
+          src="assets/ray-image-architecture.png"
           alt="RAY-IMAGE architecture schematic showing text prompt conditioning, a flow-matching DiT, latent representation, and a custom VAE decoder"
           width="100%"
         />
