@@ -62,6 +62,63 @@
 
 The source code, model artifact, and training cache are maintained in their original locations and linked above. The Hugging Face checkpoint is experimental; the existence of a checkpoint or inference entry point does not, by itself, establish reliable generated-image quality.
 
+
+## Featured project · CraveDirect
+
+<p>
+  <strong>CraveDirect</strong> is a deployed food-discovery storefront and full-stack API MVP. It brings restaurant browsing, cuisine filters, menus, cart management, delivery addresses, cash-on-delivery checkout, and order history into one web experience, with a separate read-only directory for discovering restaurants and places.
+</p>
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://cravedirect-web.netlify.app/">
+        <img src="assets/cravedirect-home.jpg" alt="CraveDirect home page and hero section" width="100%" />
+      </a>
+      <p align="center"><sub>Storefront</sub></p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://cravedirect-web.netlify.app/">
+        <img src="assets/cravedirect-discovery.jpg" alt="CraveDirect food discovery search and filters" width="100%" />
+      </a>
+      <p align="center"><sub>Food discovery</sub></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://cravedirect-web.netlify.app/">
+        <img src="assets/cravedirect-restaurants.jpg" alt="CraveDirect restaurant listings and cuisine cards" width="100%" />
+      </a>
+      <p align="center"><sub>Restaurant listings</sub></p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://cravedirect-web.netlify.app/">
+        <img src="assets/cravedirect-discovery-footer.jpg" alt="CraveDirect discovery experience and footer" width="100%" />
+      </a>
+      <p align="center"><sub>Discovery experience</sub></p>
+    </td>
+  </tr>
+</table>
+
+### Project links
+
+- **[Open the live CraveDirect website ↗](https://cravedirect-web.netlify.app/)**
+- **[View the source repository ↗](https://github.com/Rishidev-20thcenturey/food-delivery-api)**
+- **[Check the live API health endpoint ↗](https://cravedirect-api.onrender.com/api/v1/health)**
+
+### Technology and scope
+
+| Area | Details |
+|---|---|
+| **Frontend** | React, TypeScript, Vite |
+| **Backend** | Node.js, Express 5, typed REST API |
+| **Data and API contract** | PostgreSQL, OpenAPI 3.1, automated tests |
+| **Hosting** | Netlify storefront, Render API |
+| **Current scope** | Restaurant browsing, filters, cart, addresses, cash-on-delivery checkout, order history, and read-only external discovery |
+| **Status** | Deployed MVP/demo; not production-hardened |
+
+> **Scope note:** External discovery listings are not automatically orderable through CraveDirect. Online payments and complete worldwide ordering are not implemented.
+
 ---
 
 ## More projects
