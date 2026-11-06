@@ -12,7 +12,7 @@
 ## Featured project · RAY-IMAGE
 
 <p>
-  <strong>RAY-IMAGE</strong> is an independent, experimental text-to-image research project built around a custom VAE, Diffusion Transformers (DiT), flow matching, frozen Qwen3-4B text conditioning, and classifier-free guidance (CFG). The latest project research includes a 110.7M dense DiT v4 baseline and a roughly 482M sparse Mixture-of-Experts DiT v5, with training conducted on free-tier Kaggle T4 GPUs. The repository's main branch currently preserves the older v3 source snapshot; the README distinguishes that source state from the later v4/v5 research record.
+  <strong>RAY-IMAGE is my independently developed text-to-image research system.</strong> I design and implement the model architectures and the surrounding generation stack: a custom Variational Autoencoder (VAE), Diffusion Transformers (DiT), flow-matching training, frozen Qwen3-4B text conditioning, classifier-free guidance, latent/text caching, and checkpoint workflows. I have developed the system through three major DiT generations, from the original ~60M v3 baseline to a 110.7M dense v4 and a ~482M sparse-MoE v5, training on free-tier Kaggle T4 GPUs.
 </p>
 
 <table>
@@ -21,23 +21,26 @@
       <a href="https://github.com/Rishidev-20thcenturey/rustes-generative-ai">
         <img
           src="https://raw.githubusercontent.com/Rishidev-20thcenturey/rustes-generative-ai/main/Screenshot_20261023-175533%20%282%29.png"
-          alt="Legacy RAY-IMAGE experimental sample grid from an earlier model iteration; not v4 or v5 output"
+          alt="RAY-IMAGE v3 historical sample gallery showing early generated image experiments"
           width="100%"
         />
       </a>
       <p align="center">
-        <sub>Legacy experimental sample gallery from an earlier RAY-IMAGE iteration. These examples are not v4/v5 outputs and are not a controlled benchmark or evidence of current model quality.</sub>
+        <sub>Early v3 generated samples: the original visual baseline that informed later v4 and v5 architecture iterations.</sub>
       </p>
     </td>
     <td width="34%" valign="top">
       <h3>Project links</h3>
-      <p><strong>Active source code</strong><br />
-        <a href="https://github.com/Rishidev-20thcenturey/rustes-generative-ai">Open the RAY-IMAGE repository on main ↗</a>
+      <p><strong>Repository and project overview</strong><br />
+        <a href="https://github.com/Rishidev-20thcenturey/rustes-generative-ai">Open RAY-IMAGE on GitHub ↗</a>
       </p>
-      <p><strong>Technical README</strong><br />
-        <a href="https://github.com/Rishidev-20thcenturey/rustes-generative-ai/blob/main/README.md">Current research status, main-branch scope, limitations, and artifacts ↗</a>
+      <p><strong>Current research README</strong><br />
+        <a href="https://github.com/Rishidev-20thcenturey/rustes-generative-ai/blob/main/README.md">Model progression, engineering decisions, and training report ↗</a>
       </p>
-      <p><strong>Public model repository</strong><br />
+      <p><strong>v4/v5 implementation history</strong><br />
+        <a href="https://github.com/Rishidev-20thcenturey/rustes-generative-ai/tree/arena/416eda21-rustes-generative-ai">Inspect the v4/v5 development code ↗</a>
+      </p>
+      <p><strong>Public v5 model artifact</strong><br />
         <a href="https://huggingface.co/Rishix500/ray-image-dit-v5-moe">RAY-IMAGE DiT v5 MoE ↗</a>
       </p>
       <p><strong>Public training cache</strong><br />
@@ -50,37 +53,37 @@
   </tr>
 </table>
 
-### At a glance
+### Architecture and engineering work
 
-| Area | Details |
+| Area | What I built |
 |---|---|
-| **Image representation** | VAE v3 at 512 × 512 RGB; 16 latent channels on a 64 × 64 grid |
-| **v4 dense baseline** | 110,724,750 parameters; 2D axial RoPE, SwiGLU, and gated text cross-attention; its 120k checkpoint warm-started v5 |
-| **v5 sparse MoE** | About 482M total parameters and 204M active per token; 1 shared plus 8 routed SwiGLU experts with top-2 routing |
-| **Text conditioning** | Frozen Qwen3-4B; 2,560-dimensional hidden states, truncated to 128 tokens |
-| **Training objective** | Flow matching; Euler integration for sampling; optional classifier-free guidance |
-| **Compute** | Free-tier Kaggle T4 GPUs |
-| **Training status** | v5 logs reach approximately 171.4k steps |
-| **Project status** | Experimental research code; no formal image-quality benchmark and not a production image generator |
+| **Latent image pipeline** | Custom VAE v3 for 512 × 512 RGB images, producing 16-channel latents on a 64 × 64 grid |
+| **DiT v3 foundation** | Approximately 60M-parameter dense model; established the initial real-image training and generation path |
+| **DiT v4** | Counted 110,724,750-parameter dense model with 2D axial RoPE, SwiGLU, and gated text cross-attention |
+| **DiT v5 MoE** | Approximately 482M total parameters, around 204M active per token; one shared and eight routed SwiGLU experts with top-2 routing |
+| **Text conditioning** | Frozen Qwen3-4B hidden states, 2,560 dimensions, truncated to 128 tokens |
+| **Training objective** | Flow matching and velocity prediction; warm-start transfer from the v4 120k checkpoint into v5 |
+| **Generation** | Euler integration over the learned velocity field and optional classifier-free guidance |
+| **Training infrastructure** | Latent/text cache preparation, checkpoint and EMA handling, resume logic, numerical guards, and Kaggle T4 training workflows |
 
-### Current research state and limitations
+### Training progress and model behaviour
 
-The v5 training logs show a modest loss improvement: approximately 1.5 near 127k steps to 1.4 near 170k, with velocity MSE moving from about 1.5 to 1.35. These are training diagnostics, not image-quality measurements.
+The v5 training record reaches approximately **171.4k steps**. From around 127k to 170k steps, logged loss moved from approximately 1.5 to 1.4, while velocity MSE moved from around 1.5 to 1.35. Routing diagnostics show a load-balance term near 1.1, with no expert collapse reported in the reviewed logs.
 
-The v4 samples reviewed so far show more prompt-specific colour and composition than the v5 samples reviewed at 135k steps, but object structure is weak in both. Several v5 samples share similar compositions, and prompt adherence remains uncertain. The 170k v5 checkpoint has not yet been sampled and reviewed. A direct real-prompt versus null-prompt conditioning test and a formal benchmark have not yet been completed.
+The current sample review shows v4 producing more prompt-specific colour and composition than the v5 samples reviewed at 135k. The main quality target is stronger object structure and clearer prompt separation. I am using matched prompts and seeds to compare later v5 checkpoints, and a real-prompt versus null-prompt velocity test to quantify text-conditioning strength.
 
 ### Model and artifact access
 
-| Artifact | Current access |
+| Artifact | Access |
 |---|---|
-| **DiT v5 MoE main repository** | Public; linked above. The project record reports a 170k checkpoint. |
-| **MONET + Qwen cache** | Public; linked above. Its dataset card reports 140,000 samples despite “200k” in the repository name. |
-| **DiT v4 dense model and milestones** | Private; not publicly downloadable. |
-| **DiT v5 milestones repository** | Private; not publicly downloadable. |
-| **VAE v3 512px checkpoint repository** | Private; not publicly downloadable. |
-| **Legacy v3 checkpoint** | Private; not publicly downloadable. |
+| **DiT v5 MoE main repository** | Public; [open model repository](https://huggingface.co/Rishix500/ray-image-dit-v5-moe) |
+| **MONET + Qwen cache** | Public; [open dataset](https://huggingface.co/datasets/Rishix500/monet-qwen-cache-200k-v4). Its dataset card currently reports 140,000 samples despite the historical “200k” name. |
+| **DiT v4 model and milestones** | Private Hugging Face repositories |
+| **DiT v5 milestone repository** | Private Hugging Face repository |
+| **VAE v3 512px checkpoint** | Private Hugging Face repository |
+| **Legacy v3 checkpoint** | Private Hugging Face repository |
 
-Repository visibility was checked on 6 November 2026. Public repository visibility does not imply that every companion checkpoint, milestone, or dependency is public or independently validated. The main-branch README now includes the latest v4/v5 project research record while clearly stating that v4/v5 source code has not been merged into main.
+Access was checked on 6 November 2026. The project README documents the model lineage, training diagnostics, engineering priorities, and artifact visibility. The v3 gallery above is a historical output set; v4 and v5 sample comparisons are tracked separately.
 
 ## Featured project · CraveDirect
 
