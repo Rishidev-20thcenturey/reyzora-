@@ -68,22 +68,29 @@
 
 ### Training progress and model behaviour
 
-I trained the v5 MoE run through approximately **171.4k steps**. Between roughly 127k and 170k steps, loss moved from about 1.5 to 1.4 and velocity MSE from about 1.5 to 1.35. The router load-balance term stayed near 1.1, with balanced routing and no observed expert collapse in the reviewed logs.
+I trained the v5 MoE run through approximately **171.4k logged steps**. The authenticated Hugging Face inventory shows full and EMA checkpoint files uploaded through **175k**: four paired checkpoints at 160k, 165k, 170k, and 175k. Full checkpoint files are approximately 7.72 GB each, and EMA files approximately 1.93 GB each. The separate v5 milestone repository contains paired checkpoints at 130k, 140k, 150k, 160k, and 170k.
+
+Between roughly 127k and 170k steps, logged loss moved from about 1.5 to 1.4 and velocity MSE from about 1.5 to 1.35. The router load-balance term stayed near 1.1, with balanced routing and no observed expert collapse in the reviewed logs.
 
 In the samples reviewed so far, v4 produces more prompt-specific colour and composition than the v5 135k checkpoint. The next quality improvements are stronger object structure and clearer prompt separation. My next validation cycle compares later v5 checkpoints with matched prompts and seeds, and measures conditioning strength by comparing real-prompt and null-prompt velocity predictions at the same noise and timestep.
 
 ### Model and artifact access
 
-| Artifact | Access |
+| Artifact | Verified contents |
 |---|---|
-| **DiT v5 MoE main repository** | Public; [open model repository](https://huggingface.co/Rishix500/ray-image-dit-v5-moe) |
-| **MONET + Qwen cache** | Public; [open dataset](https://huggingface.co/datasets/Rishix500/monet-qwen-cache-200k-v4). Its dataset card currently reports 140,000 samples despite the historical “200k” name. |
-| **DiT v4 model and milestones** | Private Hugging Face repositories |
-| **DiT v5 milestone repository** | Private Hugging Face repository |
-| **VAE v3 512px checkpoint** | Private Hugging Face repository |
-| **Legacy v3 checkpoint** | Private Hugging Face repository |
+| **DiT v5 MoE main repository** | Public; [open model repository](https://huggingface.co/Rishix500/ray-image-dit-v5-moe). Full + EMA checkpoints at 160k, 165k, 170k, and 175k; null-prompt embedding file present. |
+| **DiT v5 milestones** | Private; full + EMA checkpoint pairs at 130k, 140k, 150k, 160k, and 170k. |
+| **DiT v4 dense model** | Private; full + EMA checkpoint pairs at 105k, 110k, 115k, and 120k; null-prompt embedding file present. |
+| **DiT v4 milestones** | Private; full + EMA checkpoint pairs at 80k, 90k, 100k, 110k, and 120k. |
+| **VAE v3 512px** | Private; checkpoint series from 500 to 30,000 steps, saved every 500 steps. |
+| **Legacy v3 DiT** | Private; full + EMA 300k checkpoint files and null-prompt embedding present. |
+| **Public v3-era cache** | [monet-qwen-cache-200k](https://huggingface.co/datasets/Rishix500/monet-qwen-cache-200k); 19 chunks through 190k, using the earlier 16×32×32 latent and 47×2560 text representation. |
+| **Public v4 cache** | [monet-qwen-cache-200k-v4](https://huggingface.co/datasets/Rishix500/monet-qwen-cache-200k-v4); 14 chunks, 140k samples, with 16×64×64 latents and 128×2560 Qwen embeddings. |
+| **Legacy DiT v2** | [Public repository](https://huggingface.co/Rishix500/ray-image-dit-n8-v2); one rescue checkpoint at step 8,500. |
 
-Access was checked on 6 November 2026. The project README documents the model lineage, training diagnostics, engineering priorities, and artifact visibility. The v3 gallery above is a historical output set; v4 and v5 sample comparisons are tracked separately.
+I inspected the file trees of 11 model repositories and 4 dataset repositories through the authenticated Hugging Face account. File presence and file sizes are verified; this is not the same as independently loading checkpoint tensors or measuring sample quality. The v3 gallery above is a historical output set; v4 and v5 sample comparisons are tracked separately.
+
+The two public Spaces, [Rey](https://huggingface.co/spaces/Rishix500/Rey) and [Reyx5000](https://huggingface.co/spaces/Rishix500/Reyx5000), are currently static starter templates, not working RAY-IMAGE inference demos.
 
 ## Featured project · CraveDirect
 
