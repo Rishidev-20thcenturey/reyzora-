@@ -12,7 +12,7 @@
 ## Featured project · RAY-IMAGE
 
 <p>
-  <strong>RAY-IMAGE is my independently developed text-to-image research system.</strong> I design and implement the model architectures and the surrounding generation stack: a custom Variational Autoencoder (VAE), Diffusion Transformers (DiT), flow-matching training, frozen Qwen3-4B text conditioning, classifier-free guidance, latent/text caching, and checkpoint workflows. I have developed the system through three major DiT generations, from the original ~60M v3 baseline to a 110.7M dense v4 and a ~482M sparse-MoE v5, training on free-tier Kaggle T4 GPUs.
+  <strong>I am the creator and primary developer of RAY-IMAGE, an independently built text-to-image research system.</strong> I designed and implemented its custom Variational Autoencoder (VAE), Diffusion Transformer architectures, flow-matching training pipeline, frozen Qwen3-4B text conditioning, classifier-free guidance, latent/text caching, and checkpoint workflows. I have advanced the system through three major DiT generations: the ~60M v3 foundation, a 110.7M dense v4, and a ~482M sparse-MoE v5. I train and iterate on the models using free-tier Kaggle T4 GPUs.
 </p>
 
 <table>
@@ -68,9 +68,9 @@
 
 ### Training progress and model behaviour
 
-The v5 training record reaches approximately **171.4k steps**. From around 127k to 170k steps, logged loss moved from approximately 1.5 to 1.4, while velocity MSE moved from around 1.5 to 1.35. Routing diagnostics show a load-balance term near 1.1, with no expert collapse reported in the reviewed logs.
+I trained the v5 MoE run through approximately **171.4k steps**. Between roughly 127k and 170k steps, loss moved from about 1.5 to 1.4 and velocity MSE from about 1.5 to 1.35. The router load-balance term stayed near 1.1, with balanced routing and no observed expert collapse in the reviewed logs.
 
-The current sample review shows v4 producing more prompt-specific colour and composition than the v5 samples reviewed at 135k. The main quality target is stronger object structure and clearer prompt separation. I am using matched prompts and seeds to compare later v5 checkpoints, and a real-prompt versus null-prompt velocity test to quantify text-conditioning strength.
+In the samples reviewed so far, v4 produces more prompt-specific colour and composition than the v5 135k checkpoint. The next quality improvements are stronger object structure and clearer prompt separation. My next validation cycle compares later v5 checkpoints with matched prompts and seeds, and measures conditioning strength by comparing real-prompt and null-prompt velocity predictions at the same noise and timestep.
 
 ### Model and artifact access
 
