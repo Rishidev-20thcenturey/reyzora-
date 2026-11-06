@@ -12,13 +12,13 @@
 ## Featured project · RAY-IMAGE
 
 <p>
-  <strong>RAY-IMAGE</strong> is an independent, experimental text-to-image research project built around a custom VAE, Diffusion Transformers (DiT), flow matching, frozen Qwen3-4B text conditioning, and classifier-free guidance (CFG). The active development branch contains the v4 dense baseline and v5 sparse Mixture-of-Experts model. Training has been conducted on free-tier Kaggle T4 GPUs.
+  <strong>RAY-IMAGE</strong> is an independent, experimental text-to-image research project built around a custom VAE, Diffusion Transformers (DiT), flow matching, frozen Qwen3-4B text conditioning, and classifier-free guidance (CFG). The latest project research includes a 110.7M dense DiT v4 baseline and a roughly 482M sparse Mixture-of-Experts DiT v5, with training conducted on free-tier Kaggle T4 GPUs. The repository's main branch currently preserves the older v3 source snapshot; the README distinguishes that source state from the later v4/v5 research record.
 </p>
 
 <table>
   <tr>
     <td width="66%" valign="top">
-      <a href="https://github.com/Rishidev-20thcenturey/rustes-generative-ai/tree/arena/416eda21-rustes-generative-ai">
+      <a href="https://github.com/Rishidev-20thcenturey/rustes-generative-ai">
         <img
           src="https://raw.githubusercontent.com/Rishidev-20thcenturey/rustes-generative-ai/main/Screenshot_20261023-175533%20%282%29.png"
           alt="Legacy RAY-IMAGE experimental sample grid from an earlier model iteration; not v4 or v5 output"
@@ -32,10 +32,10 @@
     <td width="34%" valign="top">
       <h3>Project links</h3>
       <p><strong>Active source code</strong><br />
-        <a href="https://github.com/Rishidev-20thcenturey/rustes-generative-ai/tree/arena/416eda21-rustes-generative-ai">Open the active v4/v5 development branch ↗</a>
+        <a href="https://github.com/Rishidev-20thcenturey/rustes-generative-ai">Open the RAY-IMAGE repository on main ↗</a>
       </p>
       <p><strong>Technical README</strong><br />
-        <a href="https://github.com/Rishidev-20thcenturey/rustes-generative-ai/blob/arena/416eda21-rustes-generative-ai/README.md">Architecture, training record, limitations, and artifacts ↗</a>
+        <a href="https://github.com/Rishidev-20thcenturey/rustes-generative-ai/blob/main/README.md">Current research status, main-branch scope, limitations, and artifacts ↗</a>
       </p>
       <p><strong>Public model repository</strong><br />
         <a href="https://huggingface.co/Rishix500/ray-image-dit-v5-moe">RAY-IMAGE DiT v5 MoE ↗</a>
@@ -80,7 +80,7 @@ The v4 samples reviewed so far show more prompt-specific colour and composition 
 | **VAE v3 512px checkpoint repository** | Private; not publicly downloadable. |
 | **Legacy v3 checkpoint** | Private; not publicly downloadable. |
 
-Repository visibility was checked on 6 November 2026. Public repository visibility does not imply that every companion checkpoint, milestone, or dependency is public or independently validated. The active v4/v5 implementation and its detailed engineering notes are documented on the linked development branch.
+Repository visibility was checked on 6 November 2026. Public repository visibility does not imply that every companion checkpoint, milestone, or dependency is public or independently validated. The main-branch README now includes the latest v4/v5 project research record while clearly stating that v4/v5 source code has not been merged into main.
 
 ## Featured project · CraveDirect
 
